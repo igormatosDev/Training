@@ -1,3 +1,2 @@
-var fs = require('fs');
+let fs = require('fs');
 
-fs.readFileSync();
