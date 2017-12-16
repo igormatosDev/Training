@@ -118,3 +118,121 @@
     }
 }
 
+
+//SIXTH LESSON - STARTING A SERVER
+{
+    //app.js
+    {
+        let http = require('http');
+
+        let server = http.createServer(function (request, response) {
+            console.log('request was made: ' + request.url);
+            response.writeHead(200, {'Content-Type': 'text/plain'});
+            response.end('Hey!');
+        });
+
+        server.listen(3000, '127.0.0.1');
+        console.log('Yo Dawgs, now listening to port 3000');
+    }
+}
+
+
+//SEVENTH LESSON - READING A FILE CHUNK BY CHUNK, WITH STREAM AND BUFFERS
+{
+    //app.js
+    {
+        let http = require('http');
+        let fs = require('fs');
+
+        let myReadStream = fs.createReadStream(__dirname + '/readme.txt','utf8');
+        let myWriteStream = fs.createWriteStream(__dirname + '/writeme.txt');
+
+        //It does the same thing of
+        myReadStream.on('data', function (chunk) {
+            console.log('new chunk received:');
+            myWriteStream.write(chunk)
+        });
+        //this vvv
+        myReadStream.pipe(myWriteStream);
+    }
+}
+
+//EIGHTH LESSON - SHOWING A HTML PAGE USING SERVER
+{
+    // app.js
+    {
+        let http = require('http');
+        let fs = require('fs');
+
+
+        let server = http.createServer(function (request, response) {
+            console.log('request was made: ' + request.url);
+            response.writeHead(200, {'Content-Type': 'text/html'});
+            let myReadStream = fs.createReadStream(__dirname + '/index.html','utf8');
+            myReadStream.pipe(response);
+        });
+
+        server.listen(3000, '127.0.0.1');
+        console.log('Yo Dawgs, now listening to port 3000');
+    }
+}
+
+// NINETH LESSON - SENDING JSON BACK TO PAGE USING SERVER
+{
+    //app.js
+    {
+        let http = require('http');
+        let fs = require('fs');
+
+
+        let server = http.createServer(function (request, response) {
+            console.log('request was made: ' + request.url);
+            response.writeHead(200, {'Content-Type': 'application/json'});
+            let obj = {
+                name:'Ryan',
+                job:'Axe guy',
+                age: 18
+            };
+
+            response.end(JSON.stringify(obj));
+        });
+
+        server.listen(3000, '127.0.0.1');
+        console.log('Yo Dawgs, now listening to port 3000');
+    }
+}
+
+// TENTH LESSON - BASIC ROUTING AT NODEJS
+{
+    // app.js
+    {
+        let http = require('http');
+        let fs = require('fs');
+
+
+        let server = http.createServer(function (request, response) {
+            console.log('request was made: ' + request.url);
+            if (request.url === '/home' || request.url === '/') {
+                response.writeHead(200, {'Content-Type': 'text/html'});
+                fs.createReadStream(__dirname + '/index.html').pipe(response);
+            } else if (request.url === '/contact') {
+                response.writeHead(200, {'Content-Type': 'text/html'});
+                fs.createReadStream(__dirname + '/contact.html').pipe(response);
+            } else if (request.url === '/api/ninjas') {
+                let ninjas = [
+                    {name: 'Lass', age: 23},
+                    {name: 'Senbonzakura', age: 33}
+                ];
+                response.writeHead(200, {'Content-Type': 'json/application'});
+                response.end(JSON.stringify(ninjas));
+            }
+            else{
+                response.writeHead(404, {'Content-Type': 'text/html'});
+                fs.createReadStream(__dirname + '/404.html').pipe(response);
+            }
+        });
+
+        server.listen(3000, '127.0.0.1');
+        console.log('Yo Dawgs, now listening to port 3000');
+    }
+}
