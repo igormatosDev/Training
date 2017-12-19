@@ -236,3 +236,7 @@
         console.log('Yo Dawgs, now listening to port 3000');
     }
 }
+
+//NOTE: TO GENERATE THE "package.json" FILE, WE USE THE COMMAND "npm init" AND ANSWER THE QUESTIONS. THIS "package.json"
+//FILE IS USED FOR REQUIRE ANOTHER PACKAGES BY CMD, BECAUSE SOME OF THESE PACKAGES REQUIRES THE "package.json" FILE. IF
+//YOU USE "npm install {package} -save", THE NPM WILL INSTALL THE PACKAGE AS A DEPENDENCE.

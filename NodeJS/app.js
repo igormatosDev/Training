@@ -18,7 +18,7 @@ let server = http.createServer(function (request, response) {
         response.writeHead(200, {'Content-Type': 'json/application'});
         response.end(JSON.stringify(ninjas));
     }
-    else{
+    else {
         response.writeHead(404, {'Content-Type': 'text/html'});
         fs.createReadStream(__dirname + '/404.html').pipe(response);
     }
