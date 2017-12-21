@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile of <%=person%></title>
+    <style>
+        body {
+            background-color: lightskyblue;
+            padding: 50px 0;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-family: Verdana;
+            text-align: center;
+            color: white;
+        }
+
+        h2 {
+            font-size: 30px;
+            font-family: Verdana;
+            text-align: center;
+            color: white;
+        }
+
+        p, li {
+            font-size: 26px;
+            font-family: Verdana;
+            text-align: center;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<h1>Welcome to profile of <%=person%>!</h1>
+<p><strong>Age: </strong><%=data.age%></p>
+<p><strong>Job: </strong><%=data.job%></p>
+<h2>Hobbies</h2>
+<ul>
+    <% data.hobbies.forEach(function(item){ %>
+    <li><%=item%></li>
+    <%}) %>
+</ul>
+</body>
+</html>
