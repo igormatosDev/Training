@@ -5,11 +5,11 @@ app.set('view engine', 'ejs');
 
 
 app.get('/', function (req, resp) {
-    resp.sendFile(__dirname + '/index.html');
+    resp.render('index');
 });
 
 app.get('/contact', function (req, resp) {
-    resp.sendFile(__dirname + '/contact.html');
+    resp.render('contact', {qs: req.query});
 });
 
 app.get('/profile/:name', function (req, res) {
