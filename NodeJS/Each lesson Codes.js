@@ -240,3 +240,26 @@
 //NOTE: TO GENERATE THE "package.json" FILE, WE USE THE COMMAND "npm init" AND ANSWER THE QUESTIONS. THIS "package.json"
 //FILE IS USED FOR REQUIRE ANOTHER PACKAGES BY CMD, BECAUSE SOME OF THESE PACKAGES REQUIRES THE "package.json" FILE. IF
 //YOU USE "npm install {package} -save", THE NPM WILL INSTALL THE PACKAGE AS A DEPENDENCE.
+
+//ELEVENTH LESSON - SETTING ROUTES BY EXPRESS
+{
+    // app.js
+    {
+        let express = require('express');
+        let app = express();
+
+        app.get('/', function (req, resp) {
+            resp.send('This is a homepage');
+        });
+
+        app.get('/contact', function (req, resp) {
+            resp.send('This is the contact page');
+        });
+
+        app.get('/profile/:id',function(req,resp){
+            resp.send('You request to see a profile with id of '+req.params.id)
+        });
+
+        app.listen(3000);
+    }
+}
