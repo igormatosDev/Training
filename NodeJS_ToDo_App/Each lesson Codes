@@ -1,1 +1,4 @@
+Steps to build an To-Do App
 
+1- First thing when starting a project: npm init. It'll create a package.json file with all informations
+2- Install dependencies of project, in case of this app, I'm installing Express, EJS and body-parser
